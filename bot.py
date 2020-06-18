@@ -35,7 +35,11 @@ def create_answer(text: str, chat_id):
         bot.send_message(chat_id, 'Ищу всех участников')
         return parse()
     elif text.startswith('бот'):
-        count = int(text.replace('бот', '').strip())
+        try:
+            count = int(text.replace('бот', '').strip())
+        except ValueError:
+            return 'Ожидалось число участников или ничего'
+
         bot.send_message(chat_id, f'Ищу {count} участников')
         return parse(count)
 
