@@ -35,8 +35,11 @@ def parse(max_count=None):
         cards = soup.find_all('div', class_='video_name')
         for card in cards:
             name = card.find_all('strong')[0].text
-            count = int(card.find_all('span')[1].text)
-            users.append(User(name, count))
+            try:
+                count = int(card.find_all('span')[1].text)
+                users.append(User(name, count))
+            except ValueError:
+                return 'Ожидалось число участников или ничего'
 
     users.sort(reverse=True)
     text = ''
