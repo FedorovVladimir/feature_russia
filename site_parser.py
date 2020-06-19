@@ -43,7 +43,7 @@ def parse(max_count=None):
     for i in range(len(users)):
         if i == max_count:
             break
-        text += f'{str(users[i])}\n'
+        text += f'{i+1}) {str(users[i])}\n'
 
     return text
 
