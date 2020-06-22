@@ -48,7 +48,7 @@ def parse(max_count=None):
     for i in range(len(users)):
         if i == max_count:
             break
-        text += f'{i+1}) {str(users[i])} {users[i].count/sum*100}%\n'
+        text += f'{i+1}) {str(users[i])} {int(users[i].count/sum*100)}%\n'
 
     return text
 
