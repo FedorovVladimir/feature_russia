@@ -39,11 +39,16 @@ def parse(max_count=None):
             users.append(User(name, count))
 
     users.sort(reverse=True)
+
+    sum = 0
+    for user in users:
+        sum += user.count
+
     text = ''
     for i in range(len(users)):
         if i == max_count:
             break
-        text += f'{i+1}) {str(users[i])}\n'
+        text += f'{i+1}) {str(users[i])} {users[i].count/sum*100}%\n'
 
     return text
 
