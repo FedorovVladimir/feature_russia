@@ -25,6 +25,7 @@ def parse(max_count=None):
 
     # обработка по одной странице
     users = []
+    sum = 0
     for i in range(count_pages):
         url = f'https://доблестьалтая.рф/voiting/?PAGEN_1={i + 1}'
         try:
@@ -37,12 +38,9 @@ def parse(max_count=None):
             name = card.find_all('strong')[0].text
             count = int(card.find_all('span')[1].text)
             users.append(User(name, count))
+            sum += count
 
     users.sort(reverse=True)
-
-    sum = 0
-    for user in users:
-        sum += user.count
 
     text = ''
     for i in range(len(users)):
