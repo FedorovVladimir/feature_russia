@@ -26,8 +26,7 @@ def send_help(message):
     bot.send_message(message.chat.id, "Команды:\n"
                                       "/start - привет бот\n"
                                       "/help - помощь\n"
-                                      "Бот - показ всего списка\n"
-                                      "Бот {количество записей} - показ части списка\n")
+                                      "Бот {количество записей не больше 10)} - показ части списка\n")
 
 
 def create_answer(text: str, chat_id):
