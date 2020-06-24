@@ -31,16 +31,15 @@ def send_help(message):
 
 
 def create_answer(text: str, chat_id):
-    if 'бот' == text:
-        bot.send_message(chat_id, 'Ищу всех участников')
-        return parse()
-    elif text.startswith('бот'):
+    if text.startswith('бот'):
         try:
             count = int(text.replace('бот', '').strip())
+            if count > 10:
+                return 'Нельзя запрашивать больше десяти участников.'
         except ValueError:
             return 'Ожидалось число участников или ничего'
 
-        bot.send_message(chat_id, f'Ищу {count} участников')
+        bot.send_message(chat_id, f'Ищу {count} участников. Подождите...')
         return parse(count)
 
 
